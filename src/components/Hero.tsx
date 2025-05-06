@@ -1,18 +1,36 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { CalendarDays, MapPin, Clock } from 'lucide-react';
-import HackathonCube from './HackathonCube';
+import TypewriterText from './TypewriterText';
 
 const Hero = () => {
+  const [firstTextComplete, setFirstTextComplete] = useState(false);
+  const [secondTextComplete, setSecondTextComplete] = useState(false);
+  
   return (
     <div className="relative bg-dot-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl font-extrabold text-black sm:text-5xl md:text-6xl">
-              <span className="block">Mini Hackathon</span>
-              <span className="block text-primary">Innovate. Create. Solve.</span>
+              <span className="block">
+                <TypewriterText 
+                  text="Mini Hackathon" 
+                  speed={100}
+                  onComplete={() => setFirstTextComplete(true)}
+                />
+              </span>
+              {firstTextComplete && (
+                <span className="block text-primary">
+                  <TypewriterText 
+                    text="Innovate. Create. Solve." 
+                    speed={100}
+                    delay={300}
+                    onComplete={() => setSecondTextComplete(true)}
+                  />
+                </span>
+              )}
             </h1>
             <p className="mt-3 max-w-md mx-auto lg:mx-0 text-base text-black/70 sm:text-lg md:mt-5 md:text-xl">
               Join us for an exciting 24-hour coding marathon where you'll solve real-world problems, 
@@ -42,7 +60,13 @@ const Hero = () => {
           </div>
 
           <div className="order-first lg:order-last">
-            <HackathonCube />
+            <div className="w-full p-8 border-2 border-black rotate-3 transition-transform duration-700 hover:rotate-0">
+              <div className="p-8 border-2 border-black -rotate-2 transition-transform duration-700 hover:rotate-0 flex items-center justify-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                  CODE
+                </h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>

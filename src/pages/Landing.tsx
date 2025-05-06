@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import LoadingScreen from '@/components/LoadingScreen';
-import HackathonCube from '@/components/HackathonCube';
+import TypewriterText from '@/components/TypewriterText';
 
 const Landing = () => {
   const [loading, setLoading] = useState(true);
+  const [firstTextComplete, setFirstTextComplete] = useState(false);
   const navigate = useNavigate();
 
   const handleLoadComplete = () => {
@@ -24,13 +25,30 @@ const Landing = () => {
       ) : (
         <div className="min-h-screen flex flex-col">
           <div className="flex-grow flex flex-col items-center justify-center bg-dot-pattern">
-            <div className="w-full max-w-lg">
-              <HackathonCube />
+            <div className="w-full max-w-lg mb-8">
+              <div className="p-8 border-2 border-black rotate-3 transition-transform duration-700 hover:rotate-0 flex items-center justify-center">
+                <div className="p-8 border-2 border-black -rotate-2 transition-transform duration-700 hover:rotate-0">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+                    CODE
+                  </h2>
+                </div>
+              </div>
             </div>
             
             <div className="text-center px-4 mt-8">
               <h1 className="text-5xl md:text-6xl font-extrabold text-black">
-                Mini <span className="text-primary">Hackathon</span>
+                <TypewriterText 
+                  text="Mini " 
+                  speed={120}
+                  onComplete={() => setFirstTextComplete(true)}
+                />
+                {firstTextComplete && (
+                  <TypewriterText 
+                    text="Hackathon" 
+                    speed={120}
+                    className="text-primary"
+                  />
+                )}
               </h1>
               <p className="mt-4 text-xl text-black/70">
                 Innovation starts here. Join us for 24 hours of coding, collaboration, and creativity.

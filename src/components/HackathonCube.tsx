@@ -1,36 +1,16 @@
 
-import React, { useRef } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
-import * as THREE from 'three';
-
-const Cube = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  
-  useFrame(({ clock }) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.5) * 0.3;
-      meshRef.current.rotation.y = Math.sin(clock.getElapsedTime() * 0.3) * 0.4;
-    }
-  });
-  
-  return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[2, 2, 2]} />
-      <meshStandardMaterial color="black" wireframe />
-    </mesh>
-  );
-};
+import React from 'react';
 
 const HackathonCube = () => {
   return (
-    <div className="w-full h-64 md:h-80 lg:h-96">
-      <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        <Cube />
-        <OrbitControls enableZoom={false} />
-      </Canvas>
+    <div className="w-full h-64 md:h-80 lg:h-96 flex items-center justify-center">
+      <div className="p-8 border-2 border-black rotate-12 transition-transform duration-700 hover:rotate-0">
+        <div className="p-8 border-2 border-black -rotate-6 transition-transform duration-700 hover:rotate-0">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            CODE
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };
