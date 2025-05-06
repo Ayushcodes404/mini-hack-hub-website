@@ -20,12 +20,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-background border-b">
+    <nav className="bg-background border-b border-black/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <span className="text-xl font-bold text-primary">Mini Hackathon</span>
+              <span className="text-xl font-bold text-black">Mini Hackathon</span>
             </Link>
           </div>
           
@@ -38,14 +38,14 @@ const Navbar = () => {
                 className={cn(
                   "px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   item.href === location.pathname
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-secondary"
+                    ? "bg-black text-white"
+                    : "hover:bg-gray-100"
                 )}
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="ml-4">Register</Button>
+            <Button className="ml-4 bg-black text-white hover:bg-black/80">Register</Button>
           </div>
           
           {/* Mobile menu button */}
@@ -55,6 +55,7 @@ const Navbar = () => {
               size="icon" 
               onClick={toggleMenu} 
               aria-label="Toggle menu"
+              className="text-black hover:bg-gray-100"
             >
               <Menu className="h-6 w-6" />
             </Button>
@@ -73,8 +74,8 @@ const Navbar = () => {
                 className={cn(
                   "block px-3 py-2 rounded-md text-base font-medium",
                   item.href === location.pathname
-                    ? "bg-primary text-primary-foreground"
-                    : "hover:bg-secondary"
+                    ? "bg-black text-white"
+                    : "hover:bg-gray-100"
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -82,7 +83,7 @@ const Navbar = () => {
               </Link>
             ))}
             <div className="mt-4 px-3">
-              <Button className="w-full">Register</Button>
+              <Button className="w-full bg-black text-white hover:bg-black/80">Register</Button>
             </div>
           </div>
         </div>
