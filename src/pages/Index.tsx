@@ -1,9 +1,9 @@
 
 import React from 'react';
-import InfoPage from './Info';
+import { Navigate } from 'react-router-dom';
 
 const Index = () => {
-  return <InfoPage />;
+  return <Navigate to="/" replace />;
 };
 
 export default Index;
